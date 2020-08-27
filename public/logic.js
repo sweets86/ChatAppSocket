@@ -2,114 +2,6 @@
 
 const socket = io()
 
-/* let room = ""
-let name = ""
-let isInRoom = false
-
-window.onload = function () {
-    setupListners()
-}
-function checkCommand() {
-    const messageInput = document.querySelector('.room.ui input')
-    const message = messageInput.value
-
-    if (message[0] == "/") {
-        console.log("Gör anrop till api och skicka bildurl")
-    }
-    console.log('value: ', message)
-}
-
-function deleteAllRooms() {
-    socket.emit('delete all rooms')
-}
-
-function setupListners() {
-
-    socket.on("rooms deleted", roomsDeleted)
-    socket.on("join successful", loadChatUI) // () => {},är exakt samma sak
-    socket.on("joined room", onJoinedRoom)
-    socket.on("message", onNewMessage)
-    socket.on("wrong password", wrongPassword)
-}
-
-function roomsDeleted(msg) {
-    alert(msg)
-}
-
-function loadChatUI() {
-    const joinUI = document.querySelector('.join.ui')
-    const roomUI = document.querySelector('.room.ui')
-    joinUI.classList.add('hidden')
-    roomUI.classList.remove('hidden')
-}
-
-function onJoinedRoom(message) {
-    const list = document.querySelector('.room.ui ul')
-    const listItem = document.createElement('li')
-    listItem.innerText = message
-
-    list.appendChild(listItem)
-    isInRoom = true
-}
-
-function onNewMessage(data) {
-    const list = document.querySelector('.room.ui ul')
-    const listItem = document.createElement('li')
-    listItem.innerText = data.name + ": " + data.message
-
-    list.appendChild(listItem)
-}
-function wrongPassword(msg) {
-    alert(msg)
-}
-
-function onJoinRoom() {
-    const [nameInput, roomInput, passwordInput] = document.querySelectorAll('.join.ui input')
-    name = nameInput.value
-    room = roomInput.value
-    // man vill inte ha lösenord på clientsidan
-    let password = passwordInput.value
-
-    socket.emit('join room', { name, room, password })
-}
-
-function onSendMessage() {
-    const messageInput = document.querySelector('.room.ui input')
-    const message = messageInput.value
-
-    socket.emit('message', {name, room, message})
-    messageInput.value = ""
-} */
-
-/* socket.on('send giphy', function (img) {
-
-    let fig = document.createElement('figure')
-    let image = document.createElement('img')
-    let fc = document.createElement('figcaption')
-
-    image.src = img.content
-    image.alt = img.text
-    fc.textContent = img.type
-    console.log(img)
-
-    fig.appendChild(image)
-    fig.appendChild(fc)
-
-    let out = document.getElementById('imgBox')
-    out.insertAdjacentElement('afterbegin', fig)
-
-}) */
-
-/* function printGiphy(data) {
-
-    console.log(data)
-
-    let giphyPic = data[0].images.downsized.url
-    let giphyText = data[0].title
-
-    socket.emit('send giphy', { type: giphyText, content: giphyPic })
-} */
-
 function printGiphy(giphy) {
 
     let fig = document.createElement('figure')
@@ -127,7 +19,6 @@ function printGiphy(giphy) {
     let out = document.getElementById('imgBox')
     out.insertAdjacentElement('afterbegin', fig)
 }
-
 
 socket.on('chat message', function (msg) {
     
@@ -189,22 +80,4 @@ async function getApi() {
     const content = await response.json()
 
     return content.data
-    /* return content.data[0].images.downsized.url */
 }
-
-
-
-
-/* fetch(url).then(response => {
-    return response.json()
-}).then(content => {
-    if (content) {
-        let data = content.data
-         printGiphy(data)
-        return data
-    }
-    // data, pagination, meta
-    console.log('META', content.meta)
-}).catch(err => {
-    console.log(err)
-}) */
