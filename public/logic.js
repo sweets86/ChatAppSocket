@@ -21,7 +21,7 @@ function printGiphy(giphy) {
 }
 
 socket.on('chat message', function (msg) {
-    
+
     if (msg.type == "text") {
         const chatList = document.getElementById('chatList')
         const newMessage = document.createElement('li')
@@ -52,17 +52,23 @@ async function sendMessage() {
     clearInput()
 }
 
-/* function changeCommand() {
+function command() {
     const message = document.getElementById('m').value
-    let popUp = document.querySelector('div')
+    const gifBox = document.getElementById('gifBox')
 
-    if (message[0] == "/") {
-        popUp.innerText = message
-        popUp.onclick = function () {
-            sendMessage()
-        }
+    if (message === "/") {
+        gifBox.style.display = "block"
+    } else {
+        gifBox.style.display = "none"
     }
-} */
+}
+
+function setValue() {
+    document.getElementById('m').value = "/gif/"
+    
+    const gifBox = document.getElementById('gifBox')
+    gifBox.style.display = "none"
+}
 
 function clearInput() {
     let clear = document.getElementById('m').value = ""

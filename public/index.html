@@ -11,18 +11,29 @@
 </head>
 
 <body>
+
+    <style>
+        #gifBox{
+            display: none;
+            width: 10em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        li{
+            cursor: pointer;
+        }
+    </style>
+
     <h1>Välkommen till Chatten!</h1>
 
     <div class="chatBox">
         <ul id="chatList"></ul>
     </div>
 
-    <div id="select">
-        <input id="m" autocomplete="off"/>
-        <button onclick="sendMessage()">Skicka</button>
-    </div>
     <div>
-        
+        <input oninput="command()" id="m" autocomplete="off"/>
+        <li onclick="setValue()" id="gifBox">gif/</li>
+        <button onclick="sendMessage()">Skicka</button>
     </div>
 
     <div id="imgBox">
